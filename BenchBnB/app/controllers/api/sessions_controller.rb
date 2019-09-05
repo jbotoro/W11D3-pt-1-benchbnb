@@ -6,19 +6,20 @@ class Api::SessionsController < ApplicationController
       params[:user][:password]
     )
     if user.nil?
-      render json: "username/password incorrect"
+      render json: ["username/password incorrect"], status: 401
     else
       login(user)
-      render "/views/api/users/show"
+      render "api/users/show"
     end
   end
 
   def destroy
+
     if logged_in?
       logout 
-      render json: {}
+      render 'api/users/show'
     else
-      render "Not logged in", status: 404 
+      render json: ["Not logged in"], status: 404 
     end
   end
 end
