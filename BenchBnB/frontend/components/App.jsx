@@ -5,6 +5,8 @@ import LogInFormContainer from './login_form/login_form_container';
 import SignUpFormContainer from './login_form/signup_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
+import SearchContainer from './benches/search_container';
+
 import { 
     Route, Redirect, Switch,
     Link, HashRouter
@@ -22,6 +24,7 @@ const App = () => (
         <Switch>
             <AuthRoute path='/login' component={LogInFormContainer}/>
             <AuthRoute path='/signup' component={SignUpFormContainer}/>
+            <Route exact path="/" component={SearchContainer} />
         </Switch>
     </div>
 );
